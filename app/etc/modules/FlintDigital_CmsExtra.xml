@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category	FlintDigital
+ * @package	FlintDigital_CmsExtra
+ * @author	Adrian Esquivel
+ */
+ -->
+<config>
+    <modules>
+        <FlintDigital_CmsExtra>
+            <active>true</active>
+            <codePool>local</codePool>
+            <version>0.1.0</version>
+        </FlintDigital_CmsExtra>
+    </modules>
+</config>

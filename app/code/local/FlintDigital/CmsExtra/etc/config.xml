@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <FlintDigital_CmsExtra>
+            <version>0.1.0</version>
+        </FlintDigital_CmsExtra>
+    </modules>
+
+    <global>
+
+        <resources>
+            <cmsextra_setup>
+                <setup>
+                    <module>FlintDigital_CmsExtra</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </cmsextra_setup>
+            <cmsextra_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </cmsextra_write>
+            <cmsextra_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </cmsextra_read>
+        </resources>
+
+        <models>
+            <cmsextra>
+                <class>FlintDigital_CmsExtra_Model</class>
+            </cmsextra>
+        </models>
+
+        <events>
+            <adminhtml_cms_page_edit_tab_content_prepare_form>
+                <observers>
+                    <flintdigital_cmsextra_page_edit_tab_content>
+                        <type>singleton</type>
+                        <class>FlintDigital_CmsExtra_Model_Observer</class>
+                        <method>altMetaTitle</method>
+                    </flintdigital_cmsextra_page_edit_tab_content>
+                </observers>
+            </adminhtml_cms_page_edit_tab_content_prepare_form>
+        </events>
+
+        <blocks>
+            <cms>
+                <rewrite>
+                    <page>FlintDigital_CmsExtra_Block_Page</page>
+                </rewrite>
+            </cms>
+        </blocks>
+
+    </global>
+</config>

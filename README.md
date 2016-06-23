@@ -15,6 +15,7 @@ Clear Cache
 2. Enter the the new Meta Title value in the # Alternative Meta Title Field #
 3. Click Save. 
 4. On the frontend of the site if you view source you should see value you just entered in the `<title> `
+5. blah
 
 ###Dependancies
 None. This module overrides the default meta title behaviour. 

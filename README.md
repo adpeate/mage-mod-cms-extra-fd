@@ -10,12 +10,15 @@ Using Modgit
 Clear Cache
 `rm -Rf var/cache`
 
-
 ### Usage
 1. Goto the Content->Custom tab in the CMS page edit view.
 2. Enter the the new Meta Title value in the # Alternative Meta Title Field #
 3. Click Save. 
 4. On the frontend of the site if you view source you should see value you just entered in the <title> 
 
+### Dependancies
+None. This module overrides the default meta title behaviour. 
 
-
+### References
+Used some ideas here: http://inchoo.net/magento/change-any-page-title-in-magento/
+Original Request M7: https://flint.assembla.com/spaces/method-seven/tickets/603-cms-page-name-changes/details

@@ -6,27 +6,43 @@ class FlintDigital_CmsExtra_Model_Observer
     //Method to add the alt_meta_title field to the form fields collection
     public function altMetaTitle($observer)
     {
-        //get CMS model with data
+        
         $model = Mage::registry('cms_page');
-
-        //get form instance
+        
         $form = $observer->getForm();
 
-        $fieldset = $form->getElement('base_fieldset');
-//        var_dump(get_class($fieldset));die('saprissa');
-
-        //create new custom fieldset 'alt_meta_title'
-        $fieldset = $form->addFieldset('atwix_content_fieldset', array('legend'=>Mage::helper('cms')->__('Custom'),'class'=>'fieldset-wide'));
-//        add new field
+        $fieldset = $form->getElement('meta_fieldset');
+        		
         $fieldset->addField('alt_meta_title', 'text', array(
             'name'      => 'alt_meta_title',
-            'label'     => Mage::helper('cms')->__('Alternative Meta Title'),
-            'title'     => Mage::helper('cms')->__('Alternative Meta Title'),
-            'disabled'  => false,
-            //set field value
+            'label'     => Mage::helper('cms')->__('Meta Title'),
+            'title'     => Mage::helper('cms')->__('Meta Title'),
+            'disabled'  => false,            
             'value'     => $model->getAltMetaTitle()
         ));
 
-
     }
+    
+    /*
+     * This is a workaround to override Creare SEO that uses the same method to override the title
+     */ 
+    public function setTitle($observer) {
+		$request = Mage::app()->getRequest();
+        $module = $request->getModuleName();
+        $controller = $request->getControllerName();
+        $action = $request->getActionName();
+        
+		$actionName = "{$module}_{$controller}_{$action}";
+		
+		if ($actionName == "cms_index_index" || $actionName == "cms_page_view") {
+			$altMetaTitle = Mage::getSingleton('cms/page')->getAltMetaTitle();
+			if($altMetaTitle){
+				$layout = Mage::app()->getLayout();
+				if ($head = $layout->getBlock('head')) {
+					$head->setTitle($altMetaTitle);
+				}
+			}
+			
+		}
+	}
 }

@@ -36,15 +36,24 @@
         </models>
 
         <events>
-            <adminhtml_cms_page_edit_tab_content_prepare_form>
+            <adminhtml_cms_page_edit_tab_meta_prepare_form>
                 <observers>
-                    <flintdigital_cmsextra_page_edit_tab_content>
+                    <flintdigital_cmsextra_page_edit_tab_meta>
                         <type>singleton</type>
-                        <class>FlintDigital_CmsExtra_Model_Observer</class>
+                        <class>cmsextra/observer</class>
                         <method>altMetaTitle</method>
-                    </flintdigital_cmsextra_page_edit_tab_content>
+                    </flintdigital_cmsextra_page_edit_tab_meta>
                 </observers>
-            </adminhtml_cms_page_edit_tab_content_prepare_form>
+            </adminhtml_cms_page_edit_tab_meta_prepare_form>
+            <core_block_abstract_to_html_before>
+                <observers>                   
+                    <settitle>
+                        <type>singleton</type>
+                        <class>cmsextra/observer</class>
+                        <method>setTitle</method>
+                    </settitle>                   
+                </observers>
+            </core_block_abstract_to_html_before>
         </events>
 
         <blocks>
